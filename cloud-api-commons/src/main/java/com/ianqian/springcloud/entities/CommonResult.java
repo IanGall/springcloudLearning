@@ -24,7 +24,15 @@ public class CommonResult<T> {
         return new CommonResult(200, "成功", null);
     }
 
+    public static CommonResult success(String msg) {
+        return new CommonResult(200, msg, null);
+    }
+
     public static <T> CommonResult<T> success(T data) {
         return new CommonResult<T>(200, "成功", data);
+    }
+
+    public static <T> CommonResult<T> success(String msg, T data) {
+        return new CommonResult<T>(200, msg, data);
     }
 }
