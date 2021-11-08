@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>cloud2020</artifactId>
+        <groupId>org.example</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>cloud-eureka-server7002</artifactId>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <docker.image.prefix>eureka</docker.image.prefix>
+    </properties>
+
+    <dependencies>
+        <!--eureka-server-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+        </dependency>
+        <!-- 引入自己定义的api通用包，可以使用Payment支付Entity -->
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>cloud-api-commons</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!--boot web actuator-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!--一般通用配置-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+    </dependencies>
+
+    <!--<build>-->
+    <!--    <plugins>-->
+    <!--        &lt;!&ndash; Docker &ndash;&gt;-->
+    <!--        <plugin>-->
+    <!--            <groupId>com.spotify</groupId>-->
+    <!--            <artifactId>docker-maven-plugin</artifactId>-->
+    <!--            <version>1.0.0</version>-->
+    <!--            &lt;!&ndash; 将插件绑定在某个phase执行 &ndash;&gt;-->
+    <!--            <executions>-->
+    <!--                <execution>-->
+    <!--                    <id>build-image</id>-->
+    <!--                    &lt;!&ndash; 用户只需执行mvn package ，就会自动执行mvn docker:build &ndash;&gt;-->
+    <!--                    <phase>package</phase>-->
+    <!--                    <goals>-->
+    <!--                        <goal>build</goal>-->
+    <!--                    </goals>-->
+    <!--                </execution>-->
+    <!--            </executions>-->
+    <!--            <configuration>-->
+    <!--                &lt;!&ndash; 指定生成的镜像名 &ndash;&gt;-->
+    <!--                <imageName>${docker.image.prefix}/${project.artifactId}:${project.version}</imageName>-->
+    <!--                &lt;!&ndash; 指定标签 &ndash;&gt;-->
+    <!--                <imageTags>-->
+    <!--                    <imageTag>${project.version}</imageTag>-->
+    <!--                </imageTags>-->
+    <!--                &lt;!&ndash; 指定 Dockerfile 路径 &ndash;&gt;-->
+    <!--                <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>-->
+    <!--                &lt;!&ndash; 指定远程 docker api地址 &ndash;&gt;-->
+    <!--                <dockerHost>http://400-infra.server.iocoder.cn:2375</dockerHost>-->
+    <!--                <resources>-->
+    <!--                    <resource>-->
+    <!--                        <targetPath>/</targetPath>-->
+    <!--                        &lt;!&ndash; jar包所在的路径此处配置的对应target目录 &ndash;&gt;-->
+    <!--                        <directory>${project.build.directory}</directory>-->
+    <!--                        &lt;!&ndash; 需要包含的jar包,这里对应的是Dockerfile中添加的文件名　&ndash;&gt;-->
+    <!--                        <include>${project.build.finalName}.jar</include>-->
+    <!--                    </resource>-->
+    <!--                </resources>-->
+    <!--            </configuration>-->
+    <!--        </plugin>-->
+    <!--    </plugins>-->
+    <!--</build>-->
+</project>

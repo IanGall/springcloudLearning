@@ -1,0 +1,7 @@
+POST http://localhost:8001/payment/insert
+Content-Type: application/json
+
+{
+  "serial": "atguigu002"
+}
+###
