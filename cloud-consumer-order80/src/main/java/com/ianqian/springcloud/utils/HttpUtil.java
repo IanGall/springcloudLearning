@@ -95,7 +95,7 @@ public class HttpUtil {
         return result;
     }
 
-    public RestTemplate getRestTemplate() {
+    public static RestTemplate getRestTemplate() {
         return restTemplate;
     }
 
