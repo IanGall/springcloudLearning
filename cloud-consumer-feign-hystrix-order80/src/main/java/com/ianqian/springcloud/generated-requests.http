@@ -1,0 +1,6 @@
+###
+GET http://localhost:80/consumer/payment/get/31
+
+###
+GET http://localhost:80/consumer/hystrix/timeout/31
+
