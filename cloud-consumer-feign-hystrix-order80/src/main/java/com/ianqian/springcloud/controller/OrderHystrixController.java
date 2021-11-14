@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/consumer")
 @Slf4j
-@DefaultProperties(defaultFallback = "payment_Global_FallbackMethod")
+// @DefaultProperties(defaultFallback = "payment_Global_FallbackMethod")
 public class OrderHystrixController {
 
     @Autowired
@@ -33,7 +33,7 @@ public class OrderHystrixController {
     // @HystrixCommand(fallbackMethod = "paymentInfo_TimeOutHandler", commandProperties = {
     //         @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "2000")
     // })
-    @HystrixCommand//用全局的fallback方法
+    // @HystrixCommand//用全局的fallback方法
     public String paymentInfo_TimeOut(@PathVariable("id") Integer id) {
         return orderHystrixService.paymentInfo_TimeOut(id);
     }
