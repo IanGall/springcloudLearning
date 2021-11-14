@@ -1,8 +1,8 @@
 package com.ianqian.springcloud.controller;
 
-import com.ianqian.springcloud.entities.CommonResult;
-import com.ianqian.springcloud.entities.Payment;
 import com.ianqian.springcloud.service.OrderHystrixService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/consumer")
 @Slf4j
-public class PaymentHystrixController {
+public class OrderHystrixController {
 
     @Autowired
     private OrderHystrixService orderHystrixService;
@@ -28,8 +28,15 @@ public class PaymentHystrixController {
     }
 
     @GetMapping("/hystrix/timeout/{id}")
+    @HystrixCommand(fallbackMethod = "paymentInfo_TimeOutHandler", commandProperties = {
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "2000")
+    })
     public String paymentInfo_TimeOut(@PathVariable("id") Integer id) {
         return orderHystrixService.paymentInfo_TimeOut(id);
     }
 
+    public String paymentInfo_TimeOutHandler(Integer id) {
+        return "线程池:" + Thread.currentThread().getName() + "paymentInfo_TimeOutHandler," +
+                "id:" + "\t" + "::>_<::";
+    }
 }
