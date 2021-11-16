@@ -22,6 +22,7 @@
         <module>cloud-config-center-3344</module>
         <module>cloud-config-client-3355</module>
         <module>cloud-config-client-3366</module>
+        <module>cloud-stream-rabbitmq-provider8801</module>
         <!--<module>cloud-consumer-zk-order80</module>-->
         <!--<module>cloud-provider-payment8004</module>-->
         <!--<module>cloud-provider-payment8006</module>-->
