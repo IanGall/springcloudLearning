@@ -17,11 +17,11 @@
     </properties>
 
     <dependencies>
-        <!--&lt;!&ndash;包含了sleuth+zipkin&ndash;&gt;-->
-        <!--<dependency>-->
-        <!--    <groupId>org.springframework.cloud</groupId>-->
-        <!--    <artifactId>spring-cloud-starter-zipkin</artifactId>-->
-        <!--</dependency>-->
+        <!--包含了sleuth+zipkin-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
 
         <!--eureka-client-->
         <dependency>

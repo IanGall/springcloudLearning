@@ -60,4 +60,12 @@ public class OrderController {
         URI uri = instance.getUri();
         return HttpUtil.doGet(uri + "/payment/lb", String.class);
     }
+
+    // ====================> zipkin+sleuth
+    @GetMapping("/payment/zipkin")
+    public String paymentZipkin() {
+        String result = HttpUtil.doGet("http://localhost:8001" + "/payment/zipkin/", String.class);
+        return result;
+    }
+
 }
